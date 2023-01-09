@@ -36,19 +36,20 @@ contract SOULTOKEN is ERC20 {
 
     modifier isEligibleToReward {
         require(strikes[msg.sender] < 5, "Rewarder has too many strikes");
+        _;
+    }
 
+    function rewardSoul(address recipient) public isEligibleToReward {
         uint currentTime = block.timestamp;
         uint timepassed = currentTime - referenceTime;
         uint daysPassed = timepassed/secondsInADay;
         uint currentDay = referenceTime + daysPassed * secondsInADay;
 
         require(rewardTime[msg.sender][currentDay] < 3, "Rewarder Exceeding rewarding limit today.");
-        _;
-    }
-
-    function rewardSoul(address recipient) public isEligibleToReward {
+        
         transferFrom(address(this),recipient,1);
         rewardCount[recipient]++;
+        rewardTime[msg.sender][currentDay]++;
 
         if(checkEligibilityForNFT(recipient)){
             rewardNFT(recipient);
