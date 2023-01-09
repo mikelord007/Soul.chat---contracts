@@ -5,7 +5,7 @@ pragma solidity ^0.8.7;
 // import "hardhat/console.sol";
 
 import '@openzeppelin/contracts/token/ERC20/ERC20.sol';
-import './SOULNFTS.sol';
+import "./SOULNFT.sol";
 
 contract SOULTOKEN is ERC20 {
 
