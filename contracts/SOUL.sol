@@ -9,8 +9,8 @@ import "./SOULNFT.sol";
 
 contract SOULTOKEN is ERC20 {
 
-    mapping (address=>uint) strikes;
-    mapping (address=>uint) rewardCount;
+    mapping (address=>uint) public strikes;
+    mapping (address=>uint) public rewardCount;
     mapping (address=>mapping(uint=>uint8)) rewardTime;
     uint64 private referenceTime = 1673202600;
     uint24 private secondsInADay = 86400;

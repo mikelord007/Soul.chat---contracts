@@ -17,8 +17,8 @@ async function main() {
   const soulTokenContract = await SOULTOKENContractFactory.deploy("SOULTKN", "SOUL",soulNFTContract.address);
   console.log("address: ", soulTokenContract.address)
   await soulTokenContract.deployTransaction.wait();
-  // address:  0x3c8c588668A1c698fE5c48a02F093272725e547d
-  // address:  0xc651b0ccc3C64975A5D986CE38abf8E4C342DBBa
+  // address:  0xC3ee3D1d10b5d74A4163E43644d1A17A5445A5C0
+  // address:  0xa2d93D4250fF01E84181b1937E117D8944738b49
 }
 
 // We recommend this pattern to be able to use async/await everywhere
