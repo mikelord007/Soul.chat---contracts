@@ -31,15 +31,22 @@ contract SOULTOKEN is ERC20 {
     }
 
     function checkEligibilityForNFT(address recipient) view public returns(bool)  {
-        return rewardCount[recipient] >= 100;
+        return (rewardCount[recipient] == 100)?true: false;
+    }
+
+    function isNotBanned(address recipient) view public returns(bool) {
+        return strikes[recipient] < 5;
     }
 
     modifier isEligibleToReward {
-        require(strikes[msg.sender] < 5, "Rewarder has too many strikes");
+        require(isNotBanned(msg.sender), "Rewarder has too many strikes");
         _;
     }
 
     function rewardSoul(address recipient) public isEligibleToReward {
+        require(isNotBanned(recipient), "Rewardee has too many strikes");
+        require(recipient != msg.sender, "You can't reward yourself bruh");
+
         uint currentTime = block.timestamp;
         uint timepassed = currentTime - referenceTime;
         uint daysPassed = timepassed/secondsInADay;
@@ -47,13 +54,14 @@ contract SOULTOKEN is ERC20 {
 
         require(rewardTime[msg.sender][currentDay] < 3, "Rewarder Exceeding rewarding limit today.");
         
-        transferFrom(address(this),recipient,1);
         rewardCount[recipient]++;
         rewardTime[msg.sender][currentDay]++;
 
         if(checkEligibilityForNFT(recipient)){
             rewardNFT(recipient);
         }
+
+        _transfer(address(this),recipient,1 * 10^18);
     }
 
 }
