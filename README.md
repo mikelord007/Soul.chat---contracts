@@ -1,6 +1,6 @@
-See live contract for [NFTs](https://mumbai.polygonscan.com/address/0x94575136082bE3E2A0fbC7DdD810afaD3702Dd73)
+See live contract for [NFTs](https://mumbai.polygonscan.com/address/0x39DC0AfB57cb1E30d37bfd8E63CfB0f999f3069A)
 
-See live contract for [ERC-20 tokens](https://mumbai.polygonscan.com/address/0x0b4c74019c91cC3aC7EEa02a5C82B59917DE2a85)
+See live contract for [ERC-20 tokens](https://mumbai.polygonscan.com/address/0xdB235810E780097cf1822Fc7Babe3b3EA8D58b75)
 
 
 # Sample Hardhat Project
